@@ -1,0 +1,96 @@
+<div class="wrapper">
+  <!-- Sidebar  -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>Polkadog</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+      <li>
+        <a routerLink="/tienda/list-garment">Inicio</a>
+      </li>
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              Categorias
+            </button>
+          </h2>
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              <ul class="listCategorias">
+                <li
+                  class="itemList"
+                  *ngFor="let item of listaCategorias"
+                  (click)="getCategoria(item)"
+                >
+                  {{ item.nombrecategoria }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <li>
+        <a routerLink="/tienda/new-category">Crear Categoria</a>
+      </li>
+      <li>
+        <a routerLink="/tienda/new-garment">Crear producto</a>
+      </li>
+      <li>
+        <a href="#" class="textCerrarSesion">Cerrar sesion</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Page Content  -->
+  <div id="content">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <button type="button" id="sidebarCollapse" class="btn btn-info">
+          <i class="fa fa-solid fa-bars"></i>
+        </button>
+        <button
+          class="btn btn-dark d-inline-block d-lg-none ml-auto"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-align-justify"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="nav navbar-nav ml-auto">
+            <i
+              class="fa fas fa-shopping-cart iconCar"
+              routerLink="/tienda/list-pedido"
+            ></i>
+            <div class="circuloContador"></div>
+            <span class="textContador">{{
+              this.listaCarritoContador.length
+            }}</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="col-lg-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

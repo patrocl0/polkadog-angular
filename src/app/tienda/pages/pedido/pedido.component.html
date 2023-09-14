@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-lg-8">
+    <div class="row">
+      <h2>Pedido</h2>
+      <div class="col-lg-3 mt-4" *ngFor="let item of listaCarrito">
+        <div class="card">
+          <img
+            class="card-img-top"
+            src="{{ item.imagen }}"
+            alt="Card image cap"
+            height="350"
+          />
+          <div class="card-body">
+            <div class="textTitle">{{ item.nombre_producto }}</div>
+
+            <div>
+              <span><b>Precio:</b>{{ item.precio | currency }}</span>
+            </div>
+            <div class="d-flex">
+              <div class="col-md-8">
+                <button
+                  type="button"
+                  class="btn btn-primary mr-2 p-2"
+                  (click)="addContadorPrenda(item)"
+                >
+                  +
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary mr-2 p-2"
+                  (click)="deleteContadorPrenda(item)"
+                >
+                  -
+                </button>
+              </div>
+
+              <div class="col-md-4">
+                <input
+                  type="number"
+                  class="form-control"
+                  [value]="item.cantidad"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <h1>Total a pagar</h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">nombre</th>
+          <th scope="col">precio</th>
+          <th scope="col">cantidad</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listaCarrito">
+          <th scope="row">{{ item.idproducto }}</th>
+          <td>{{ item.nombre_producto }}</td>
+          <td>{{ item.precio }}</td>
+          <td>{{ item.cantidad }}</td>
+          <td>{{ item.cantidad! * +item.precio | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button class="btn btn-success">Pagar</button>
+  </div>
+</div>

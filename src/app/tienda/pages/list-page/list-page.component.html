@@ -1,0 +1,27 @@
+<div class="row">
+  <h2>Lista productos</h2>
+  <div class="col-lg-3 mt-4" *ngFor="let item of listProducts">
+    <div class="card">
+      <img
+        class="card-img-top"
+        src="{{ item.imagen }}"
+        alt="Card image cap"
+        height="350"
+      />
+      <div class="card-body">
+        <div>
+          <span><b>Precio:</b>{{ item.precio | currency }}</span>
+        </div>
+        <div>
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="addCarShopping(item)"
+          >
+            Añadir al carrito
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
